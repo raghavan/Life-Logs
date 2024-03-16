@@ -5,6 +5,9 @@
 - Provides options to view summaries for today, this month, or this year, along with a generated image representation.
 - Allows viewing all log entries ever created.
 
+<img width="1553" alt="Screenshot 2024-03-16 at 9 22 01 AM" src="https://github.com/raghavan/Life-Logs/assets/131585/bd2f84cc-ab85-4752-a932-dbe7275ac0cc">
+
+
 # Life Log
 
 A Python-based web application for logging and summarizing daily life events, thoughts, and happenings.
