@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life Log</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('#log-form').submit(function(event) {
+                event.preventDefault();
+                $.post('/log_entry', {
+                    entry: $('#entry').val()
+                }, function(response) {
+                    if (response.success) {
+                        alert('Entry logged successfully!');
+                        $('#entry').val('');
+                        loadAllEntries();
+                    }
+                });
+            });
+
+            $('#summary-form').submit(function(event) {
+                event.preventDefault();
+                $('.loading').show();
+                $.post('/get_summary', {
+                    period: $('#period').val()
+                }, function(response) {
+                    $('#summary').text(response.summary);
+                    $('#summary-image').attr('src', 'data:image/png;base64,' + response.image_data);
+                    $('.loading').hide();
+                });
+            });
+
+            function loadAllEntries() {
+                $.get('/get_all_entries', function(response) {
+                    var entries = response.entries;
+                    var entriesHtml = '';
+                    for (var i = 0; i < entries.length; i++) {
+                        entriesHtml += '<p><strong>' + entries[i][0] + ':</strong> ' + entries[i][1] + '</p>';
+                    }
+                    $('#all-entries').html(entriesHtml);
+                });
+            }
+
+            loadAllEntries();
+        });
+    </script>
+</head>
+<body>
+    <h1>Life Log</h1>
+    <form id="log-form">
+        <textarea id="entry" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Log Entry">
+    </form>
+    <hr>
+    <form id="summary-form">
+        <select id="period">
+            <option value="day">Today</option>
+            <option value="month">This Month</option>
+            <option value="year">This Year</option>
+        </select>
+        <input type="submit" value="Get Summary">
+    </form>
+    <div class="loading">
+        <p>Loading summary and image...</p>
+    </div>
+    <h2>Summary:</h2>
+    <p id="summary"></p>
+    <h2>Summary Image:</h2>
+    <img id="summary-image" src="" alt="Summary Image">
+    <hr>
+    <h2>All Entries:</h2>
+    <div id="all-entries"></div>
+</body>
+</html>
