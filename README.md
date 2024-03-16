@@ -1,13 +1,11 @@
-** TL;DR: **
+**TL;DR:**
 - A Python-based web application for logging daily life events, thoughts, and happenings.
 - Stores log entries in a local SQLite database.
 - Generates summaries and artistic images based on the logged entries using OpenAI's GPT-3.5-turbo and DALL-E models.
 - Provides options to view summaries for today, this month, or this year, along with a generated image representation.
 - Allows viewing all log entries ever created.
 
-README.md:
-
-# Life Log Application
+# Life Log
 
 A Python-based web application for logging and summarizing daily life events, thoughts, and happenings.
 
