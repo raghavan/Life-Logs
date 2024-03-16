@@ -7,7 +7,7 @@ import base64
 from io import BytesIO
 
 app = Flask(__name__)
-openai.api_key = "OPENAI-API-KEY"
+openai.api_key = "YOUR_OPENAI_API_KEY"
 
 # Create a SQLite database connection
 conn = sqlite3.connect('life_log.db', check_same_thread=False)
