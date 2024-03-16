@@ -32,7 +32,7 @@ A Python-based web application for logging and summarizing daily life events, th
 1. Clone the repository:
 
    ```
-   git clone [https://github.com/your-username/life-log.git](https://github.com/raghavan/Life-Logs.git)
+   git clone https://github.com/raghavan/Life-Logs.git
    ```
 
 2. Set up your OpenAI API key:
